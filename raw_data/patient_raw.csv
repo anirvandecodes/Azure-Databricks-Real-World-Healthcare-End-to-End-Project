@@ -1,0 +1,6 @@
+patient_id,first_name,last_name,gender,dob,city
+P001,Aarav,Sharma,M,1980-02-14,Mumbai
+P002,Riya,Verma,F,1975-07-22,Delhi
+P003,Kabir,Menon,M,1990-11-02,Bangalore
+P004,Sneha,Rao,F,1988-09-19,Hyderabad
+P005,Vikram,Singh,M,1965-05-05,Chennai
