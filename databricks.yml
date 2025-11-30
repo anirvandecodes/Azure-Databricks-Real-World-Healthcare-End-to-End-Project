@@ -1,0 +1,18 @@
+bundle:
+  name: healthcare-end-to-end-project
+
+include:
+  - resources/*.yml
+
+targets:
+  dev:
+    mode: development
+    workspace:
+      host: ${var.databricks_host}
+    
+  prod:
+    mode: production
+    workspace:
+      host: ${var.databricks_host}
+      root_path: /Workspace/.bundle/${bundle.name}/${bundle.target}
+
