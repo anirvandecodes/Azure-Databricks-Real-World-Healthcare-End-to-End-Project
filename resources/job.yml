@@ -1,7 +1,7 @@
 resources:
   jobs:
     end_to_end_healthcare_project_job:
-      name: end-to-end-healthcare-project-job
+      name: end-to-end-healthcare-project-job-updated
       tasks:
         - task_key: diagnosis_raw_ingestion_task
           notebook_task:
