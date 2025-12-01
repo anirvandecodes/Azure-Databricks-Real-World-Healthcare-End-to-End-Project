@@ -5,3 +5,6 @@
 # Environment files
 .env
 .env.local
+
+# IDE settings
+.vscode/
