@@ -1,6 +1,21 @@
 hospital_id,hospital_name,city,bed_count
-H001,Apollo Main Hospital,Chennai,850
-H002,Fortis Healthcare Delhi,Delhi,600
-H003,Kokilaben Dhirubhai Hospital,Mumbai,700
-H004,Manipal Hospital,Bangalore,400
-H005,Yashoda Hospital,Hyderabad,450
+H001,Mayo Clinic,Rochester,1265
+H002,Cleveland Clinic,Cleveland,1285
+H003,Johns Hopkins Hospital,Baltimore,1162
+H004,Massachusetts General Hospital,Boston,1011
+H005,Mount Sinai Hospital,New York,1134
+H006,Cedars-Sinai Medical Center,Los Angeles,886
+H007,Northwestern Memorial Hospital,Chicago,894
+H008,Stanford Health Care,Stanford,613
+H009,Hospital of the University of Pennsylvania,Philadelphia,800
+H010,UCSF Medical Center,San Francisco,796
+H011,Barnes-Jewish Hospital,St. Louis,1263
+H012,Houston Methodist Hospital,Houston,907
+H013,Vanderbilt University Medical Center,Nashville,1093
+H014,Duke University Hospital,Durham,938
+H015,Brigham and Women's Hospital,Boston,793
+H016,UT Southwestern Medical Center,Dallas,872
+H017,Mayo Clinic-Phoenix,Phoenix,504
+H018,St. Jude Children's Research Hospital,Memphis,78
+H019,Emory University Hospital,Atlanta,733
+H020,Yale New Haven Hospital,New Haven,1541
