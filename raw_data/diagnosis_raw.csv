@@ -1,6 +1,26 @@
 diagnosis_code,diagnosis_desc
-D001,Hypertension
-D002,Diabetes Type 2
-D003,Chest Pain
-D004,Asthma
-D005,Kidney Infection
+D001,Essential Hypertension
+D002,Type 2 Diabetes Mellitus
+D003,Chest Pain Unspecified
+D004,Acute Bronchial Asthma
+D005,Acute Kidney Infection
+D006,Chronic Obstructive Pulmonary Disease
+D007,Coronary Artery Disease
+D008,Acute Myocardial Infarction
+D009,Congestive Heart Failure
+D010,Atrial Fibrillation
+D011,Pneumonia Bacterial
+D012,Urinary Tract Infection
+D013,Cerebrovascular Accident (Stroke)
+D014,Gastroesophageal Reflux Disease (GERD)
+D015,Chronic Kidney Disease Stage 3
+D016,Hyperlipidemia Mixed
+D017,Osteoarthritis Primary
+D018,Anxiety Disorder Generalized
+D019,Major Depressive Disorder
+D020,Acute Appendicitis
+D021,Sleep Apnea Obstructive
+D022,Anemia Iron Deficiency
+D023,Hypothyroidism Unspecified
+D024,Rheumatoid Arthritis
+D025,Migraine with Aura
