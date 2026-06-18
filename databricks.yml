@@ -2,17 +2,17 @@ bundle:
   name: healthcare-end-to-end-project
 
 include:
-  - resources/*.yml
+  - resources/job.yml
 
 targets:
   dev:
     mode: development
     workspace:
-      host: https://adb-7405607317963710.10.azuredatabricks.net
+      host: https://adb-7405604831535434.14.azuredatabricks.net
     
   prod:
     mode: production
     workspace:
-      host: https://adb-7405607317963710.10.azuredatabricks.net
+      host: https://adb-7405604831535434.14.azuredatabricks.net
       root_path: /Workspace/.bundle/${bundle.name}/${bundle.target}
 
