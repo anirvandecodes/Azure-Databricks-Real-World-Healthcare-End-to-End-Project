@@ -8,7 +8,7 @@ To enable automated deployments via GitHub Actions, configure the following secr
 
 1. **DATABRICKS_HOST**
    - Your Databricks workspace URL
-   - Example: `https://adb-2150314409263261.1.azuredatabricks.net`
+   - Example: `https://adb-7405610419374958.18.azuredatabricks.net/`
 
 2. **DATABRICKS_TOKEN**
    - Personal Access Token from Databricks
