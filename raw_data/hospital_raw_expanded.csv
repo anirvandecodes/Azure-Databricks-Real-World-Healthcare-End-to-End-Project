@@ -1,0 +1,31 @@
+hospital_id,hospital_name,city,bed_capacity
+H001,Apollo Main Hospital,Chennai,850
+H002,Fortis Healthcare Delhi,Delhi,600
+H003,Kokilaben Dhirubhai Hospital,Mumbai,700
+H004,Manipal Hospital,Bangalore,400
+H005,Yashoda Hospital,Hyderabad,450
+H006,Max Super Speciality Hospital,New Delhi,750
+H007,Narayana Health City,Bangalore,650
+H008,Medanta The Medicity,Gurugram,1000
+H009,Artemis Hospital,Gurugram,550
+H010,CARE Hospitals,Hyderabad,500
+H011,Aster Medcity,Kochi,670
+H012,Amrita Hospital,Kochi,1300
+H013,Ruby Hall Clinic,Pune,600
+H014,Jehangir Hospital,Pune,350
+H015,Wockhardt Hospital,Mumbai,450
+H016,Nanavati Max Hospital,Mumbai,750
+H017,Columbia Asia Hospital,Kolkata,420
+H018,AMRI Hospitals,Kolkata,500
+H019,Sankara Nethralaya,Chennai,300
+H020,MIOT International,Chennai,1000
+H021,KIMS Hospitals,Secunderabad,700
+H022,Continental Hospitals,Hyderabad,750
+H023,Sakra World Hospital,Bangalore,350
+H024,Cloudnine Hospital,Bangalore,200
+H025,BLK-Max Super Speciality Hospital,New Delhi,650
+H026,Sir Ganga Ram Hospital,New Delhi,675
+H027,Rajiv Gandhi Cancer Institute,New Delhi,450
+H028,Hinduja Hospital,Mumbai,380
+H029,Asian Heart Institute,Mumbai,300
+H030,Jupiter Hospital,Pune,400

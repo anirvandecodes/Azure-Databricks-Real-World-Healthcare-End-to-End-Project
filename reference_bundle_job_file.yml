@@ -55,3 +55,4 @@ resources:
       queue:
         enabled: true
       performance_target: PERFORMANCE_OPTIMIZED
+    
