@@ -1,13 +1,3 @@
-Perfect. Since the project evolved from the original tutorial, the README should reflect **what you actually built**, not just copy the tutorial's original structure.
-
-The two main updates are:
-
-* 📊 **Expanded all raw datasets** to make the project more realistic and suitable for Spark/Databricks processing.
-* 📈 **Replaced Databricks AI/BI Dashboard with Power BI** for the final analytics and visualization layer.
-
-I’d update the README sections like this:
-
-````markdown
 # 🏥 Healthcare Data Engineering Project
 
 ## 📌 Project Overview
