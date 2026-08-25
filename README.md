@@ -320,16 +320,3 @@ Interested in Data Engineering, Cloud, Big Data and AI.
 If you found this project useful, feel free to explore the repository and follow the development of the project.
 
 ```
-
-### One thing I'd change from the original tutorial
-
-Don't describe the project as **"following the tutorial"** in the README. You've already made meaningful changes:
-
-**Tutorial:**
-`small raw data → Databricks → AI/BI Dashboard`
-
-**Your version:**
-`expanded datasets → ADLS → Unity Catalog → Auto Loader → Bronze → Silver → Gold → Power BI`
-
-That's a stronger portfolio story because you're showing that you **understood the architecture and adapted it**, rather than simply reproducing the instructor's implementation.
-```
