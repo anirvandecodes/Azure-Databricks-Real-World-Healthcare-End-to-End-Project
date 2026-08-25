@@ -1,0 +1,41 @@
+diagnosis_code,diagnosis_desc
+D001,Hypertension
+D002,Diabetes Type 2
+D003,Chest Pain
+D004,Asthma
+D005,Kidney Infection
+D006,Pneumonia
+D007,Coronary Artery Disease
+D008,Migraine
+D009,Gastroenteritis
+D010,Urinary Tract Infection
+D011,Anemia
+D012,Osteoarthritis
+D013,Chronic Kidney Disease
+D014,Type 1 Diabetes
+D015,Heart Failure
+D016,Bronchitis
+D017,Pneumothorax
+D018,Gastritis
+D019,Liver Disease
+D020,Thyroid Disorder
+D021,Stroke
+D022,COVID-19
+D023,Influenza
+D024,Dengue Fever
+D025,Tuberculosis
+D026,Appendicitis
+D027,Gallstones
+D028,Peptic Ulcer Disease
+D029,Depression
+D030,Epilepsy
+D031,Dermatitis
+D032,Osteoporosis
+D033,Rheumatoid Arthritis
+D034,Glaucoma
+D035,Cataract
+D036,Obesity
+D037,Sepsis
+D038,Migraine with Aura
+D039,Food Poisoning
+D040,Panic Disorder
