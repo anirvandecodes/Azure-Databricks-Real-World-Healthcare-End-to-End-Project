@@ -1,485 +1,335 @@
-# 🏥 Healthcare Data Engineering Platform
+Perfect. Since the project evolved from the original tutorial, the README should reflect **what you actually built**, not just copy the tutorial's original structure.
 
-An end-to-end healthcare data engineering project built with **Azure Databricks**, **Azure Data Lake Storage (ADLS)**, **Unity Catalog**, and **GitHub**.
+The two main updates are:
 
-The project demonstrates how raw healthcare data can be ingested, transformed, modeled, and served for analytics using a modern **Medallion Architecture (Bronze → Silver → Gold)**.
+* 📊 **Expanded all raw datasets** to make the project more realistic and suitable for Spark/Databricks processing.
+* 📈 **Replaced Databricks AI/BI Dashboard with Power BI** for the final analytics and visualization layer.
 
----
+I’d update the README sections like this:
+
+````markdown
+# 🏥 Healthcare Data Engineering Project
 
 ## 📌 Project Overview
 
-Healthcare organizations generate large volumes of data from different sources. To make this data useful for analytics and decision-making, it needs to be:
+This project implements an end-to-end healthcare data engineering solution using **Azure Databricks, Azure Data Lake Storage Gen2, Unity Catalog, Delta Lake, and Power BI**.
 
-- Ingested from source systems
-- Stored reliably
-- Cleaned and transformed
-- Integrated into analytical models
-- Aggregated for business reporting
-- Made accessible through dashboards and AI-powered analytics
+The project demonstrates how raw healthcare data can be ingested, transformed, cleaned, modeled, and prepared for analytics through a **Medallion Architecture (Bronze → Silver → Gold)**.
 
-This project implements an end-to-end data platform using Azure Databricks and follows modern data engineering practices.
+The final Gold-layer data is connected to **Power BI** to create an interactive healthcare analytics dashboard.
 
 ---
 
 ## 🎯 Business Problem
 
-The goal of this project is to build a healthcare data platform capable of transforming raw healthcare data into trusted analytical datasets.
+Healthcare organizations generate large amounts of data from hospitals, patients, visits, and diagnoses.
 
-The platform should allow analysts and decision-makers to answer questions such as:
+The objective of this project is to build a scalable data platform that can:
 
-- How many patients are being treated?
-- What are the most common diagnoses?
-- How are patient metrics changing over time?
-- Which conditions have the highest occurrence?
-- What trends can be identified from historical healthcare data?
+- Ingest raw healthcare data
+- Store and manage data using Azure Data Lake Storage
+- Process data using Apache Spark and Databricks
+- Clean and transform healthcare records
+- Implement incremental processing and upsert logic
+- Build analytical Gold-layer datasets
+- Provide business insights through Power BI
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ Project Architecture
 
 ```text
-                    ┌─────────────────────┐
-                    │    Raw Healthcare   │
-                    │        Data         │
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │   Azure Data Lake   │
-                    │       Storage       │
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │   Azure Databricks  │
-                    │    Unity Catalog    │
-                    └──────────┬──────────┘
-                               │
-                    ┌──────────▼──────────┐
-                    │       BRONZE        │
-                    │   Raw / Ingested    │
-                    │       Data          │
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │       SILVER        │
-                    │ Cleaned & Integrated│
-                    │       Data          │
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │        GOLD         │
-                    │ Aggregated &        │
-                    │ Analytical Data     │
-                    └──────────┬──────────┘
-                               │
-                 ┌─────────────┴─────────────┐
-                 ▼                           ▼
-        ┌─────────────────┐        ┌─────────────────┐
-        │   AI/BI Genie   │        │   AI/BI         │
-        │                 │        │   Dashboard     │
-        └─────────────────┘        └─────────────────┘
+                    Azure Data Lake Storage Gen2
+                              │
+                              ▼
+                       Raw / Staging Data
+                              │
+                              ▼
+                    ┌───────────────────┐
+                    │   BRONZE LAYER    │
+                    │   Raw ingestion    │
+                    │   Auto Loader      │
+                    └─────────┬─────────┘
+                              │
+                              ▼
+                    ┌───────────────────┐
+                    │   SILVER LAYER    │
+                    │ Cleaning &         │
+                    │ transformations    │
+                    │ Merge / Upsert     │
+                    └─────────┬─────────┘
+                              │
+                              ▼
+                    ┌───────────────────┐
+                    │    GOLD LAYER     │
+                    │ Aggregations &     │
+                    │ analytical models  │
+                    └─────────┬─────────┘
+                              │
+                              ▼
+                         Power BI
+                       Dashboard
 ````
 
 ---
 
-# 🥉 Bronze Layer
+## 🛠️ Technologies Used
 
-The Bronze layer contains the raw data ingested from the source system.
-
-The project uses **Databricks Auto Loader** to ingest incoming files into the Bronze layer.
-
-### Responsibilities
-
-* Ingest raw healthcare data
-* Preserve the original data structure
-* Handle incremental file ingestion
-* Store raw data in Delta tables
+* **Azure Data Lake Storage Gen2**
+* **Azure Databricks**
+* **Unity Catalog**
+* **Apache Spark / PySpark**
+* **Delta Lake**
+* **Auto Loader**
+* **GitHub**
+* **Databricks Workflows**
+* **Power BI**
+* **Python**
+* **SQL**
 
 ---
 
-# 🥈 Silver Layer
+## 📂 Data Sources
 
-The Silver layer contains cleaned and integrated data.
+The project uses four raw healthcare datasets:
 
-Data from the Bronze layer is transformed and prepared for analytical use.
+| Dataset         | Description              |
+| --------------- | ------------------------ |
+| `patient_raw`   | Patient information      |
+| `visit_raw`     | Patient hospital visits  |
+| `hospital_raw`  | Hospital information     |
+| `diagnosis_raw` | Diagnosis reference data |
 
-### Responsibilities
+To make the project more representative of a real-world data engineering workload, the original datasets were expanded with additional synthetic records while preserving the relationships between the datasets.
+
+### Expanded Dataset
+
+| Dataset   | Records |
+| --------- | ------: |
+| Patients  |     500 |
+| Visits    |   5,000 |
+| Hospitals |      30 |
+| Diagnoses |      40 |
+
+The expanded data introduces greater volume and variety while maintaining valid relationships between patients, visits, hospitals, and diagnoses.
+
+---
+
+## 🥉 Bronze Layer
+
+The Bronze layer contains the raw ingested healthcare data.
+
+The project uses **Databricks Auto Loader** to ingest files from Azure Data Lake Storage.
+
+The main objectives of the Bronze layer are:
+
+* Ingest raw data
+* Preserve the source data
+* Support incremental file ingestion
+* Store data in Delta format
+* Provide a reliable foundation for downstream transformations
+
+---
+
+## 🥈 Silver Layer
+
+The Silver layer contains cleaned and transformed healthcare data.
+
+Transformations include:
 
 * Data cleaning
-* Data transformation
-* Data integration
-* Handling duplicates
-* Merge and upsert operations
-* Creating trusted datasets
-
-The project uses **MERGE / UPSERT logic** to maintain the Silver layer.
+* Data type standardization
+* Handling missing values
+* Removing duplicates
+* Data validation
+* Merge and upsert logic
+* Preparing data for analytical processing
 
 ---
 
-# 🥇 Gold Layer
+## 🥇 Gold Layer
 
 The Gold layer contains business-ready datasets designed for analytics.
 
 Transformations include:
 
-* Window functions
 * Aggregations
-* Business metrics
-* Analytical calculations
+* Window functions
+* Business calculations
+* Analytical metrics
+* Dimensional modeling
 
-The Gold layer provides the datasets consumed by the analytics layer.
+The Gold layer provides the datasets required for the final reporting and visualization stage.
 
 ---
 
-# 🗄️ Data Modeling
+## 📊 Power BI Dashboard
 
-The project follows **Kimball dimensional modeling** principles.
+Instead of using the Databricks built-in dashboard from the original tutorial, this implementation uses **Microsoft Power BI** as the final visualization and analytics layer.
 
-A **Star Schema** is used to organize analytical data into:
+The Power BI dashboard connects to the Gold-layer data and provides an interactive view of healthcare performance and patient-related metrics.
+
+The dashboard allows users to analyze areas such as:
+
+* Hospital performance
+* Patient activity
+* Diagnosis distribution
+* Visit trends
+* Healthcare costs
+* Key performance indicators
+
+---
+
+## 🔄 Data Pipeline
+
+The complete pipeline follows:
 
 ```text
-              ┌──────────────────┐
-              │  Dimension Table │
-              └────────┬─────────┘
-                       │
-                       │
-┌──────────────────────┼──────────────────────┐
-│                      │                      │
-▼                      ▼                      ▼
-┌─────────────┐  ┌─────────────┐  ┌────────────────┐
-│ Dimension   │  │ Fact Table  │  │ Dimension      │
-│             │──│             │──│                │
-└─────────────┘  └─────────────┘  └────────────────┘
-                       │
-                       │
-                       ▼
-                Analytical Queries
+Raw CSV Files
+     │
+     ▼
+Azure Data Lake Storage
+     │
+     ▼
+Databricks Auto Loader
+     │
+     ▼
+Bronze Delta Tables
+     │
+     ▼
+Data Cleaning & Transformation
+     │
+     ▼
+Silver Delta Tables
+     │
+     ▼
+Aggregations & Business Logic
+     │
+     ▼
+Gold Delta Tables
+     │
+     ▼
+Power BI
+     │
+     ▼
+Healthcare Analytics Dashboard
 ```
-
-This structure makes analytical queries easier to maintain and optimize.
 
 ---
 
-# ☁️ Azure Infrastructure
+## ⚙️ Orchestration
 
-The project uses the following Azure services:
+Databricks Workflows are used to orchestrate the different stages of the data pipeline.
 
-### Azure Data Lake Storage Gen2
+The workflow coordinates:
 
-Used as the cloud storage layer for the healthcare data.
+1. Bronze ingestion
+2. Silver transformations
+3. Gold transformations
+4. Downstream processing
 
-### Azure Databricks
+This allows the pipeline to run as an automated data engineering workflow rather than executing each notebook manually.
 
-Used for:
+---
 
-* Data ingestion
-* Data transformation
-* Spark processing
-* Delta Lake tables
-* Workflow orchestration
-* Analytics
+## 🔐 Data Governance
 
-### Unity Catalog
+The project uses **Unity Catalog** for centralized data governance and access management.
 
-Used for centralized data governance and access control.
+Key components include:
 
-It manages:
-
+* Metastore
+* Storage Credentials
+* External Locations
+* Access Connector
 * Catalogs
 * Schemas
-* Tables
-* External locations
-* Storage credentials
-* Permissions
+* Table permissions
 
-### Access Connector / Managed Identity
-
-Used to securely connect Azure Databricks to Azure Data Lake Storage without storing storage account keys directly in the notebooks.
+This provides controlled access to the underlying Azure Data Lake Storage resources.
 
 ---
 
-# 🔐 Data Governance
+## 🔗 Git Integration
 
-Unity Catalog provides centralized governance for the data platform.
+The Databricks workspace is integrated with **GitHub** to provide version control for the project.
 
-The project uses:
+This allows:
 
-* Managed identities
-* Storage credentials
-* External locations
-* Access control
-* Catalog and schema permissions
-
-This allows Databricks to securely access data stored in ADLS.
-
----
-
-# 🔄 Databricks Workflows
-
-Databricks Workflows are used to orchestrate the data pipeline.
-
-The pipeline follows:
-
-```text
-Raw Data
-   │
-   ▼
-Bronze Job
-   │
-   ▼
-Silver Job
-   │
-   ▼
-Gold Job
-   │
-   ▼
-Analytics
-```
-
-This allows the different data processing stages to run in the correct order.
-
----
-
-# 🔧 Git Integration
-
-The project is integrated with **GitHub** for version control.
-
-Development workflow:
-
-```text
-Databricks
-     │
-     ▼
-Modify Notebook
-     │
-     ▼
-Git Commit
-     │
-     ▼
-Git Push
-     │
-     ▼
-GitHub Repository
-```
-
-This provides:
-
-* Version control
-* Change tracking
+* Version tracking
+* Commit history
 * Collaboration
-* Branch management
 * Reproducibility
+* Project source-code management
 
 ---
 
-# 🚀 CI/CD
-
-The project introduces **Databricks Asset Bundles (DABs)** and **GitHub Actions** for CI/CD.
-
-The objective is to automate the deployment of Databricks resources and workflows.
-
-```text
-Developer
-    │
-    ▼
-GitHub Repository
-    │
-    ▼
-GitHub Actions
-    │
-    ├── Validate
-    ├── Test
-    └── Deploy
-            │
-            ▼
-      Azure Databricks
-```
-
-This allows changes to be tested and deployed in a repeatable way.
-
----
-
-# 📊 Analytics
-
-The final Gold datasets are used for analytics through:
-
-### AI/BI Genie
-
-Allows users to interact with healthcare data using natural-language questions.
-
-Example questions:
-
-```text
-What are the most common diagnoses?
-
-How many patients were treated?
-
-What are the trends over time?
-```
-
-### AI/BI Dashboards
-
-Interactive dashboards are created to visualize the business metrics produced by the Gold layer.
-
-The dashboards provide a business-friendly interface for exploring healthcare data.
-
----
-
-# 🛠️ Technology Stack
-
-| Technology                   | Purpose                      |
-| ---------------------------- | ---------------------------- |
-| Azure Data Lake Storage Gen2 | Cloud data storage           |
-| Azure Databricks             | Data engineering & analytics |
-| Apache Spark                 | Distributed data processing  |
-| Delta Lake                   | Reliable data storage        |
-| Unity Catalog                | Data governance              |
-| Azure Managed Identity       | Secure authentication        |
-| Databricks Auto Loader       | Incremental data ingestion   |
-| Databricks Workflows         | Pipeline orchestration       |
-| GitHub                       | Version control              |
-| Databricks Asset Bundles     | Deployment                   |
-| GitHub Actions               | CI/CD                        |
-| AI/BI Genie                  | Natural-language analytics   |
-| AI/BI Dashboards             | Data visualization           |
-
----
-
-# 📂 Project Structure
-
-```text
-healthcare-data-engineering/
-│
-├── bronze/
-│   └── diagnosis_raw_data_ingestion.ipynb
-│
-├── silver/
-│   └── ...
-│
-├── gold/
-│   └── ...
-│
-├── resources/
-│   └── ...
-│
-├── tests/
-│   └── ...
-│
-├── databricks.yml
-│
-└── README.md
-```
-
-> The structure may evolve as additional deployment and CI/CD components are added.
-
----
-
-# 🔄 End-to-End Data Flow
-
-```text
-Healthcare Source Data
-        │
-        ▼
-Azure Data Lake Storage
-        │
-        ▼
-Databricks Auto Loader
-        │
-        ▼
-     BRONZE
-   Raw Data
-        │
-        ▼
-   Transformations
-        │
-        ▼
-      SILVER
- Cleaned Data
-        │
-        ▼
- Aggregations +
- Window Functions
-        │
-        ▼
-       GOLD
- Business Data
-        │
-        ├───────────────┐
-        ▼               ▼
-   AI/BI Genie      AI/BI Dashboard
-```
-
----
-
-# 🎯 Key Learning Objectives
-
-This project demonstrates practical experience with:
-
-* Designing an end-to-end data engineering architecture
-* Azure cloud services
-* Azure Data Lake Storage
-* Databricks
-* Apache Spark
-* Delta Lake
-* Unity Catalog
-* Managed identities
-* External locations
-* Medallion Architecture
-* Kimball dimensional modeling
-* Star schemas
-* Incremental data ingestion
-* MERGE / UPSERT operations
-* Window functions
-* Data aggregation
-* Databricks Workflows
-* Git and GitHub
-* CI/CD
-* Databricks Asset Bundles
-* AI-powered analytics
-
----
-
-# 📌 Future Improvements
+## 🚀 Future Improvements
 
 Potential improvements include:
 
-* Docker-based development and testing
-* Automated data quality tests
-* More advanced CI/CD pipelines
-* Infrastructure as Code
-* Monitoring and alerting
-* Additional healthcare datasets
-* Advanced analytics and ML models
+* Increasing dataset volume further
+* Adding more healthcare entities
+* Implementing data quality checks
+* Adding CI/CD with GitHub Actions
+* Implementing Databricks Asset Bundles
+* Adding automated testing
+* Improving Spark performance
+* Adding incremental data ingestion scenarios
+* Implementing monitoring and alerting
 
 ---
 
-# 👨‍💻 Author
+## 📚 Key Concepts Demonstrated
 
-**Houcine**
+This project demonstrates practical experience with:
 
-Data Engineering & AI
+* Data Lake Architecture
+* Medallion Architecture
+* ETL / ELT
+* Apache Spark
+* PySpark
+* Delta Lake
+* Auto Loader
+* Incremental Data Processing
+* Merge / Upsert
+* Dimensional Modeling
+* Star Schema
+* Window Functions
+* Data Governance
+* Unity Catalog
+* Databricks Workflows
+* Git & GitHub
+* Power BI
+* Data Visualization
 
-This project was built as a hands-on implementation of a real-world healthcare data engineering platform using Azure Databricks.
+---
 
-````
+## 👨‍💻 Author
 
-### One thing I'd change as you build it
+**Houcine Aberhache**
 
-Don't claim the **DAB, CI/CD, Docker, tests, etc.** are implemented until you actually implement them.
+Data Engineering & AI Student
 
-For your current stage, I'd keep the README sections but mark future parts honestly, e.g.:
+Interested in Data Engineering, Cloud, Big Data and AI.
 
-```text
-🚧 In Progress
-- CI/CD with GitHub Actions
-- Databricks Asset Bundles
-- Data quality testing
-- Docker
-````
+---
 
-That actually looks **better for a portfolio** because someone looking at your GitHub can see the project's evolution instead of thinking you copied a finished repository.
+## ⭐ Project
 
-And now that you're at **Bronze → Silver → Gold**, I'd focus on finishing the actual pipeline first, then the dashboard, and only afterward add DAB/CI/CD as an advanced layer.
+If you found this project useful, feel free to explore the repository and follow the development of the project.
+
+```
+
+### One thing I'd change from the original tutorial
+
+Don't describe the project as **"following the tutorial"** in the README. You've already made meaningful changes:
+
+**Tutorial:**
+`small raw data → Databricks → AI/BI Dashboard`
+
+**Your version:**
+`expanded datasets → ADLS → Unity Catalog → Auto Loader → Bronze → Silver → Gold → Power BI`
+
+That's a stronger portfolio story because you're showing that you **understood the architecture and adapted it**, rather than simply reproducing the instructor's implementation.
+```
